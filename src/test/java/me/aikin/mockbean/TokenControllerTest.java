@@ -3,7 +3,8 @@ package me.aikin.mockbean;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
@@ -13,15 +14,16 @@ import static org.mockito.Mockito.when;
 
 public class TokenControllerTest extends ApiBaseTest {
 
-    @MockBean(name = "defaultRedisTemplate")
-    private RedisTemplate redisTemplate;
+    @Qualifier("defaultRedisTemplate")
+    @Autowired
+    private RedisTemplate mockedRedisTemplate;
 
-    private ValueOperations mockedValueOperations = Mockito.mock(ValueOperations.class);;
+    private ValueOperations mockedValueOperations = Mockito.mock(ValueOperations.class);
 
     @BeforeEach
     public void setup() {
         super.setup();
-        when(redisTemplate.opsForValue()).thenReturn(mockedValueOperations);
+        when(mockedRedisTemplate.opsForValue()).thenReturn(mockedValueOperations);
     }
 
     @Test
