@@ -22,21 +22,23 @@ targetCompatibility = 1.8
 ext {
     junitJupiterVersion = '5.1.0'
     junitPlatformVersion = '1.1.0'
-    springTestVersion = '5.0.4.RELEASE'
+    restAssuredVersion = '3.0.7'
 }
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("org.springframework:spring-test:${springTestVersion}")
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
     testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
     testCompile("org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}")
     testCompile("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
     testCompile("org.junit.platform:junit-platform-runner:${junitPlatformVersion}")
+    testCompile("com.jayway.restassured:spring-mock-mvc:2.9.0")
+    testCompile("com.github.sbrannen:spring-test-junit5:1.0.3")
 }
