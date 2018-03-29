@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 
-class AboutControllerTest extends ApiBaseTestSetup {
+class AboutControllerTest extends ApiBaseTest {
     @Test
     void should_can_get_about() {
         given().

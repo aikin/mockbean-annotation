@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class ApiBaseTestSetup {
+public class ApiBaseTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
